@@ -1,0 +1,6 @@
+[user]
+	email = luqmanulhakim1720@gmail.com
+	name = luqmanishere
+
+[core]
+pager = diff-so-fancy | less -FXRi

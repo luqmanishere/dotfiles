@@ -1,0 +1,71 @@
+PATH=$(/usr/bin/printenv PATH | /usr/bin/perl -ne 'print join(":", grep { !/\/mnt\/[a-z]/ } split(/:/));')
+export PATH="$HOME/.cargo/bin:$PATH"
+export EDITOR=nvim
+
+
+source $ZDOTDIR/aliases.zsh
+
+HOSTNAME=$(uname -n)
+if [[ $HOSTNAME = "rmb-win11" ]]
+then
+    #export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
+fi
+
+setopt AUTO_MENU
+setopt AUTO_PARAM_SLASH
+
+source ~/.zplug/init.zsh
+
+### Start of zplug configuration
+
+zplug "modules/editor", from:prezto
+zplug "modules/history", from:prezto
+
+# completions
+zplug "MenkeTechnologies/zsh-cargo-completion"
+zplug "spwhitt/nix-zsh-completions"
+zplug "zsh-users/zsh-completions"
+zplug "$ZDOTDIR/completions", from:local
+
+# packs
+    #ls_colors \
+    #system-completions
+#zinit wait pack"binary+keys" for fzf
+
+# plugins
+zplug "MichaelAquilina/zsh-you-should-use"
+zplug "b4b4r07/enhancd"
+zplug "hlissner/zsh-autopair", defer:3, hook-load:"autopair-init"
+zplug "MichaelAquilina/zsh-auto-notify"
+
+# ogham/exa, replacement for ls
+zplug "z-shell/zsh-diff-so-fancy"
+zplug "ptavares/zsh-direnv"
+
+#zplug "tranzystorek-io/zellij-zsh" use when zellij implements session switching
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "modules/history-substring-search", from:prezto, defer:2
+zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-autosuggestions"
+zplug "modules/completion", from:prezto, defer:2
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+        print "Remember to remove all compinit call in completion modules like prezto"
+    fi
+fi
+
+# Then, source plugins and add commands to $PATH
+zplug load --verbose
+
+### End of Zinit configuration
+
+# Load keychain
+eval `keychain --eval --agents ssh gitmain git general`
+
+# Load starship prompt
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)" 

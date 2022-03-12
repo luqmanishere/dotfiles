@@ -1,0 +1,53 @@
+---
+template:
+  direction: Horizontal
+  parts:
+    - direction: Vertical
+      borderless: true
+      split_size:
+        Fixed: 1
+      run:
+        plugin:
+          location: "zellij:tab-bar"
+    - direction: Vertical
+      body: true
+    - direction: Vertical #part3
+      borderless: true
+      split_size:
+        Fixed: 2
+      run:
+        plugin:
+          location: "zellij:status-bar"
+
+tabs:
+  - direction: Vertical
+    name: editor
+    parts:
+      - direction: Horizontal
+        borderless: true
+        split_size:
+          Percent: 80
+        run:
+          command: {cmd: nvim}
+      - direction: Horizontal
+        split_size:
+          Percent: 20
+        parts:
+          - direction: Vertical
+            split_size:
+              Percent: 60
+            run:
+              command: {cmd: cargo, args: ["watch", "-x", "c"]}
+          - direction: Vertical
+            split_size:
+              Percent: 40
+            run:
+              command: {cmd: wtfutil, args: ["--config=~/.config/wtf/test.yml"]}
+  - direction: Vertical
+    name: run
+    parts:
+      - direction: Horizontal
+
+session:
+  name: "music-manager"
+  attach: true

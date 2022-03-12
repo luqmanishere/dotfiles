@@ -1,0 +1,31 @@
+wtf:
+  colors:
+    background: "red"
+    border:
+      focusable: "darkslateblue"
+      focused: "orange"
+      normal: "gray"
+    checked: "gray"
+    highlight:
+      fore: "black"
+      back: "green"
+    text: "white"
+    title: "white"
+  grid:
+    columns: [20,20]
+    rows: [20,20]
+  refreshInterval: 1s
+  mods:
+  digitalclock:
+    color: orange
+    enabled: true
+    font: bigfont
+    hourFormat: 12
+    position:
+      top: 0
+      left: 0
+      height: 1
+      width: 1
+    title: "big clock"
+    type: "digitalclock"
+
