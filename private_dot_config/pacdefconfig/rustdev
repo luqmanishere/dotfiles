@@ -1,0 +1,8 @@
+[arch]
+rustup
+neovim
+rust-analyzer
+
+[rust]
+cargo-clean-all
+cargo-generate

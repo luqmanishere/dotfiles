@@ -1,0 +1,14 @@
+[arch]
+neovim
+nano
+tmux
+zellij
+eza
+ripgrep
+fd
+bat
+fish
+chezmoi
+zoxide
+starship
+keychain

@@ -1,0 +1,17 @@
+[arch]
+base-devel
+git
+curl
+wget
+aria2
+neovim
+man-db
+man-pages
+linux
+linux-firmware
+pacdef
+sudo
+zip
+unzip
+base
+paru-bin
