@@ -11,6 +11,7 @@ if test "$HOSTNAME" = "asuna";
     pacdef group import "$HOME/.config/pacdefconfig/cli"
     pacdef group import "$HOME/.config/pacdefconfig/desktop"
     pacdef group import "$HOME/.config/pacdefconfig/rustdev"
+    pacdef group import "$HOME/.config/pacdefconfig/luadev"
     pacdef p sy --noconfirm
   end
 end
